@@ -32,7 +32,7 @@ module.exports = {
         name: "arborio",
         filename: "remoteEntry.js",
         exposes: {
-            './Module': './projects/arborio/src/app/arborio/arborio.module.ts',
+          './Module': './projects/arborio/src/app/arborio/arborio.module.ts'
         },        
         
         // For hosts (please adjust)
