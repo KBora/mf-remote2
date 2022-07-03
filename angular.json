@@ -125,7 +125,7 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/carnaroli",
 						"index": "projects/carnaroli/src/index.html",
@@ -140,7 +140,9 @@
 						"styles": [
 							"projects/carnaroli/src/styles.scss"
 						],
-						"scripts": []
+						"scripts": [],
+						"extraWebpackConfig": "projects/carnaroli/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -162,7 +164,8 @@
 									"with": "projects/carnaroli/src/environments/environment.prod.ts"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/carnaroli/webpack.prod.config.js"
 						},
 						"development": {
 							"buildOptimizer": false,
@@ -176,21 +179,28 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "carnaroli:build:production"
+							"browserTarget": "carnaroli:build:production",
+							"extraWebpackConfig": "projects/carnaroli/webpack.prod.config.js"
 						},
 						"development": {
 							"browserTarget": "carnaroli:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4203,
+						"publicHost": "http://localhost:4203",
+						"extraWebpackConfig": "projects/carnaroli/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"builder": "ngx-build-plus:extract-i18n",
 					"options": {
-						"browserTarget": "carnaroli:build"
+						"browserTarget": "carnaroli:build",
+						"extraWebpackConfig": "projects/carnaroli/webpack.config.js"
 					}
 				},
 				"test": {
