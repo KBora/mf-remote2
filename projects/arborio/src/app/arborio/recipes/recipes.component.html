@@ -1,2 +1,8 @@
 <p>recipes works!</p>
 testing lazy loading of submodules
+
+  <ul>
+    <li *ngFor="let catFact of catFacts$ | async">
+      {{ catFact.fact }}
+    </li> 
+  </ul>

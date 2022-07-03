@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CatFactsService } from '../../services/cat-facts.service';
 
 @Component({
   selector: 'app-recipes',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesComponent implements OnInit {
 
-  constructor() { }
+  catFacts$ = this.catFactsService.getCatFacts();
+
+  constructor(private catFactsService: CatFactsService) { }
 
   ngOnInit(): void {
   }
